@@ -6,27 +6,27 @@ using namespace dramsim3;
 
 int main(int argc, const char **argv) {
     args::ArgumentParser parser(
-        "DRAM Simulator.",
-        "Examples: \n."
-        "./build/dramsim3main configs/DDR4_8Gb_x8_3200.ini -c 100 -t "
-        "sample_trace.txt\n"
-        "./build/dramsim3main configs/DDR4_8Gb_x8_3200.ini -s random -c 100");
+            "DRAM Simulator.",
+            "Examples: \n."
+            "./build/dramsim3main configs/DDR4_8Gb_x8_3200.ini -c 100 -t "
+            "sample_trace.txt\n"
+            "./build/dramsim3main configs/DDR4_8Gb_x8_3200.ini -s random -c 100");
     args::HelpFlag help(parser, "help", "Display the help menu", {'h', "help"});
     args::ValueFlag<uint64_t> num_cycles_arg(parser, "num_cycles",
-                                             "Number of cycles to simulate",
-                                             {'c', "cycles"}, 100000);
+            "Number of cycles to simulate",
+            {'c', "cycles"}, 100000);
     args::ValueFlag<std::string> output_dir_arg(
-        parser, "output_dir", "Output directory for stats files",
-        {'o', "output-dir"}, ".");
+            parser, "output_dir", "Output directory for stats files",
+            {'o', "output-dir"}, ".");
     args::ValueFlag<std::string> stream_arg(
-        parser, "stream_type", "address stream generator - (random), stream",
-        {'s', "stream"}, "");
+            parser, "stream_type", "address stream generator - (random), stream",
+            {'s', "stream"}, "");
     args::ValueFlag<std::string> trace_file_arg(
-        parser, "trace",
-        "Trace file, setting this option will ignore -s option",
-        {'t', "trace"});
+            parser, "trace",
+            "Trace file, setting this option will ignore -s option",
+            {'t', "trace"});
     args::Positional<std::string> config_arg(
-        parser, "config", "The config file name (mandatory)");
+            parser, "config", "The config file name (mandatory)");
 
     try {
         parser.ParseCLI(argc, argv);

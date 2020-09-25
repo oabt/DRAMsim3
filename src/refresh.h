@@ -8,24 +8,24 @@
 
 namespace dramsim3 {
 
-class Refresh {
-   public:
-    Refresh(const Config& config, ChannelState& channel_state);
-    void ClockTick();
+   class Refresh {
+      public:
+         Refresh(const Config& config, ChannelState& channel_state);
+         void ClockTick();
 
-   private:
-    uint64_t clk_;
-    int refresh_interval_;
-    const Config& config_;
-    ChannelState& channel_state_;
-    RefreshPolicy refresh_policy_;
+      private:
+         uint64_t clk_;
+         int refresh_interval_;
+         const Config& config_;
+         ChannelState& channel_state_;
+         RefreshPolicy refresh_policy_;
 
-    int next_rank_, next_bg_, next_bank_;
+         int next_rank_, next_bg_, next_bank_;
 
-    void InsertRefresh();
+         void InsertRefresh();
 
-    void IterateNext();
-};
+         void IterateNext();
+   };
 
 }  // namespace dramsim3
 
